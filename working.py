@@ -42,3 +42,14 @@ def get_item(name: Optional[str] = None):
     return {"Data": "Not found"}
 
 #example - http://127.0.0.1:8000/get-by-name?name=Cheese
+
+
+#path param iwth query param
+@app.get("/get-by-name/{item_id}")
+def get_item(item_id: int, name: Optional[str] = None):
+    for item_id in inventory:
+        if inventory[item_id]['name'] == name:
+            return inventory[item_id]
+    return {"Data": "Not found"}
+
+#example - http://127.0.0.1:8000/get-by-name/1?name=Cheese
